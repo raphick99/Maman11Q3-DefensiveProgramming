@@ -1,9 +1,10 @@
 #include "User.h"
 #include "USocial.h"
 
-User::User(Id _id, std::string _name, USocial* US) :
+User::User(Id _id, std::string _name, USocial* _us) :
 	id(_id),
-	name(std::move(_name))
+	name(std::move(_name)),
+	us(_us)
 {}
 
 User::Id User::getId() const
@@ -77,6 +78,6 @@ void User::viewFriendsPosts()
 {
 	for (auto friend_id : friends)
 	{
-		USocial::getInstance().getUserById(friend_id)->displayPosts();
+		const_cast<USocial*>(us)->getUserById(friend_id)->displayPosts();
 	}
 }

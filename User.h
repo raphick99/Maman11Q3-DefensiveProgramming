@@ -18,11 +18,12 @@ public:
 	friend class USocial;
 
 protected:
-	User(Id, std::string);
+	User(Id, std::string, USocial*);
 	virtual ~User() = default;
 
 	const Id id;
 	const std::string name;
+	const USocial* us;
 	std::list<Id> friends;
 	std::list<Post*> posts;
 	std::list<Message*> receivedMsgs;
