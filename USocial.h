@@ -3,9 +3,8 @@
 #include <map>
 #include <string>
 #include "User.h"
-#include "Singleton.h"
 
-class USocial final : public Singleton<USocial>
+class USocial final
 {
 private:
 	std::map<User::Id, User*> users;
@@ -16,7 +15,7 @@ public:
 	User* registerUser(std::string name, bool is_business = false)
 	{
 		auto new_user_id = next_id++;
-		auto new_user = new User(new_user_id, std::move(name));
+		auto new_user = new User(new_user_id, std::move(name), this);
 
 		users[new_user_id] = new_user;
 

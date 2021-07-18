@@ -9,6 +9,8 @@
 #include "Message.h"
 #include "Media.h"
 
+class USocial;
+
 class User
 {
 public:

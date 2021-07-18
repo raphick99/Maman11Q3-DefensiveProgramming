@@ -1,7 +1,7 @@
 #include "User.h"
 #include "USocial.h"
 
-User::User(Id _id, std::string _name) :
+User::User(Id _id, std::string _name, USocial* US) :
 	id(_id),
 	name(std::move(_name))
 {}
