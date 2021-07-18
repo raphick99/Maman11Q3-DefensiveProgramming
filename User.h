@@ -15,11 +15,10 @@ public:
 	using Id = unsigned long;
 	friend class USocial;
 
-	/* TODO: make protected */
+protected:
 	User(Id, std::string);
 	virtual ~User() = default;
 
-protected:
 	const Id id;
 	const std::string name;
 	std::list<Id> friends;

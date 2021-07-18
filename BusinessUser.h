@@ -2,7 +2,7 @@
 
 #include "User.h"
 
-class BusinessUser final : pulic User
+class BusinessUser final : public User
 {
 public:
 	virtual ~BusinessUser = default;

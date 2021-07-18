@@ -55,12 +55,23 @@ void User::displayPosts()
 		post->displayPost();
 	}
 }
-void User::receiveMessage(Message*) {}
+void User::receiveMessage(Message* m)
+{
+	receivedMsgs.push_back(m);
+}
 
-void User::sendMessage(User*, Message*) 
-{}
+void User::sendMessage(User* user, Message* m)
+{
+	user->receiveMessage(m);
+}
 
-void User::viewReceivedMessages() {}
+void User::viewReceivedMessages()
+{
+	for (const auto& m : receivedMsgs)
+	{
+		std::cout << m->getText() << std::endl;
+	}
+}
 
 void User::viewFriendsPosts()
 {

@@ -12,8 +12,8 @@ private:
 	inline static User::Id next_id = 100;
 
 public:
-	//Usocial() = default;
-	User* registerUser(std::string name, bool unk = true)
+	// USocial() = default;
+	User* registerUser(std::string name, bool is_business = false)
 	{
 		auto new_user_id = next_id++;
 		auto new_user = new User(new_user_id, std::move(name));
