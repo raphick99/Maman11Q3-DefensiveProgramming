@@ -9,7 +9,7 @@ class USocial final
 {
 private:
 	std::map<User::Id, User*> users;
-	inline static User::Id next_id = 100;
+	inline static User::Id next_id = 0;
 
 public:
 	// USocial() = default;
