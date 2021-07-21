@@ -3,11 +3,11 @@
 #include <string>
 #include <list>
 #include <string>
-#include <exception>
 #include "Post.h"
 #include "Message.h"
 #include "Media.h"
 
+// forward delcaration, so that we can hold a pointer to it.
 class USocial;
 
 class User

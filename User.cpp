@@ -1,3 +1,4 @@
+#include <exception>
 #include "User.h"
 #include "USocial.h"
 
