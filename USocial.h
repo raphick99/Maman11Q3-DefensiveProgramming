@@ -25,6 +25,10 @@ public:
 	void removeUser(User* user_to_erase)
 	{
 		users.erase(user_to_erase->getId());
+		for (auto& [_, user] : users)
+		{
+			user->removeFriend(user_to_erase);
+		}
 	}
 
 	User* getUserById(User::Id id)

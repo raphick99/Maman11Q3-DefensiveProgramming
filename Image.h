@@ -9,6 +9,6 @@ class Image final : public Media
 public:
 	void display() const override
 	{
-		std::cout << "Image::display\n";
+		std::cout << "Image::display";
 	}
 };

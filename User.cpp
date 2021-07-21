@@ -68,16 +68,21 @@ void User::sendMessage(User* user, Message* m)
 
 void User::viewReceivedMessages()
 {
+	// Display messages and then clear the message list.
 	for (const auto& m : receivedMsgs)
 	{
-		std::cout << m->getText() << std::endl;
+		m->displayMessage();
 	}
+	receivedMsgs.clear();
 }
 
 void User::viewFriendsPosts()
 {
+	// iterate over all friends and display posts.
 	for (auto friend_id : friends)
 	{
-		const_cast<USocial*>(us)->getUserById(friend_id)->displayPosts();
+		auto current_friend = const_cast<USocial*>(us)->getUserById(friend_id);
+		std::cout << current_friend->getName() << ": ";
+		current_friend->displayPosts();
 	}
 }

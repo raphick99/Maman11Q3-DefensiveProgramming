@@ -9,6 +9,6 @@ class Video final : public Media
 public:
 	void display() const override
 	{
-		std::cout << "Video::display\n";
+		std::cout << "Video::display()";
 	}
 };

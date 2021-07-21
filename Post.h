@@ -34,10 +34,12 @@ public:
 
 	void displayPost() const
 	{
-		std::cout << text << "\n";
+		std::cout << text;
 		if (media)
 		{
+			std::cout << ", ";
 			media->display();
 		}
+		std::cout << "\n";
 	}
 };
