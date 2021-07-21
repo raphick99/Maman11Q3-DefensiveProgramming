@@ -7,6 +7,26 @@ User::User(Id _id, std::string _name, USocial* _us) :
 	us(_us)
 {}
 
+User::~User()
+{
+	for (const auto& post : posts)
+	{
+		try
+		{
+			delete post;
+		}
+		catch(...) {}
+	}
+	for (const auto& message : receivedMsgs)
+	{
+		try
+		{
+			delete message;
+		}
+		catch(...) {}
+	}
+}
+
 User::Id User::getId() const
 {
 	return id;
@@ -36,12 +56,12 @@ void User::removeFriend(User* other)
 
 void User::post(std::string text)
 {
-	posts.emplace_back(new Post(text));
+	posts.push_back(new Post(text));
 }
 
 void User::post(std::string text, Media* media)
 {
-	posts.emplace_back(new Post(text, media));
+	posts.push_back(new Post(text, media));
 }
 
 const std::list<Post*>& User::getPosts()
@@ -63,7 +83,16 @@ void User::receiveMessage(Message* m)
 
 void User::sendMessage(User* user, Message* m)
 {
-	user->receiveMessage(m);
+	// check if user is my friend, otherwise cannot send.
+	for (Id friend_id : friends)
+	{
+		if (friend_id == user->getId())
+		{
+			user->receiveMessage(m);
+			return;
+		}
+	}
+	throw std::runtime_error("cannot send message to user that isn't friend");
 }
 
 void User::viewReceivedMessages()

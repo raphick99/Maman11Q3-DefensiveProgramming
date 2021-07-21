@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include "User.h"
+#include "BusinessUser.h"
 
 class USocial final
 {
@@ -12,10 +13,18 @@ private:
 
 public:
 	// USocial() = default;
-	User* registerUser(std::string name, bool is_business = false)
+	User* registerUser(std::string name, bool is_business_user = false)
 	{
 		auto new_user_id = next_id++;
-		auto new_user = new User(new_user_id, std::move(name), this);
+		User* new_user = nullptr;
+		if (!is_business_user)
+		{
+			new_user = new User(new_user_id, name, this);
+		}
+		else
+		{
+			new_user = new BusinessUser(new_user_id, name, this);
+		}
 
 		users[new_user_id] = new_user;
 

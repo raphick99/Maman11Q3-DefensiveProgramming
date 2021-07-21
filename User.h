@@ -2,7 +2,6 @@
 
 #include <string>
 #include <list>
-#include <memory>
 #include <string>
 #include <exception>
 #include "Post.h"
@@ -19,7 +18,7 @@ public:
 
 protected:
 	User(Id, std::string, USocial*);
-	virtual ~User() = default;
+	virtual ~User();
 
 	const Id id;
 	const std::string name;
