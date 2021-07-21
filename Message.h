@@ -9,18 +9,7 @@ private:
 	std::string text;
 
 public:
-	Message(const std::string& _text) :
-		text(_text)
-	{}
-
-	const std::string& getText() const
-	{
-		return text;
-	}
-
-	/* keep format of displaying messages internal to the class */
-	void displayMessage() const
-	{
-		std::cout << text << "\n";
-	}
+	Message(const std::string&);
+	const std::string& getText() const;
+	void displayMessage() const;  // keep format of displaying messages internal to the class
 };
