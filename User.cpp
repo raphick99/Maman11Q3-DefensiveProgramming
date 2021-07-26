@@ -10,13 +10,14 @@ User::User(Id _id, std::string _name, USocial* _us) :
 
 User::~User()
 {
+	// delete all, wrap in try/catch around each delete, so that if one fails, we continue.
 	for (const auto& post : posts)
 	{
 		try
 		{
 			delete post;
 		}
-		catch(...) {}
+		catch (...) {}
 	}
 	for (const auto& message : receivedMsgs)
 	{
@@ -24,7 +25,7 @@ User::~User()
 		{
 			delete message;
 		}
-		catch(...) {}
+		catch (...) {}
 	}
 }
 
@@ -55,16 +56,6 @@ void User::removeFriend(User* other)
 	friends.remove(other->getId());
 }
 
-void User::post(std::string text)
-{
-	posts.push_back(new Post(text));
-}
-
-void User::post(std::string text, Media* media)
-{
-	posts.push_back(new Post(text, media));
-}
-
 const std::list<Post*>& User::getPosts()
 {
 	return posts;
@@ -72,19 +63,22 @@ const std::list<Post*>& User::getPosts()
 
 void User::displayPosts()
 {
+	// Display all of current users posts.
 	for (const auto& post : posts)
 	{
 		post->displayPost();
 	}
 }
+
 void User::receiveMessage(Message* m)
-{
+{	
+	// Add message to queue
 	receivedMsgs.push_back(m);
 }
 
 void User::sendMessage(User* user, Message* m)
 {
-	// check if user is my friend, otherwise cannot send.
+	// Check if user is my friend, otherwise cannot send.
 	for (Id friend_id : friends)
 	{
 		if (friend_id == user->getId())
@@ -102,6 +96,7 @@ void User::viewReceivedMessages()
 	for (const auto& m : receivedMsgs)
 	{
 		m->displayMessage();
+		delete m;
 	}
 	receivedMsgs.clear();
 }

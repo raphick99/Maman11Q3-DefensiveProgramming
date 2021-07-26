@@ -31,9 +31,14 @@ public:
 	Id getId() const;
 	const std::string& getName() const;
 	void addFriend(User* other);
+
 	void removeFriend(User* other);
-	void post(std::string text);
-	void post(std::string text, Media* media);
+	template <typename ... Args>
+	void post(Args&&...args)
+	{
+		// Must be in header
+		posts.push_back(new Post(std::forward<Args>(args)...));
+	}
 	const std::list<Post*>& getPosts();
 	void viewFriendsPosts();
 	void displayPosts();
