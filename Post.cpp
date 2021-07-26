@@ -1,9 +1,5 @@
+#include <iostream>
 #include "Post.h"
-
-Post::Post(const std::string& _text) :
-    text(_text),
-    media(nullptr)
-{}
 
 Post::Post(const std::string& _text, Media* _media) :
     text(_text),

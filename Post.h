@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 #include "Media.h"
 
@@ -11,8 +10,7 @@ private:
 	Media* media;
 
 public:
-	Post(const std::string&);
-	Post(const std::string&, Media*);
+	Post(const std::string&, Media* = nullptr);
 	~Post();
 	const std::string& getText() const;
 	const Media* getMedia() const;
