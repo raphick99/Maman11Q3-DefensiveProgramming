@@ -1,4 +1,5 @@
 #include "USocial.h"
+#include "User.h"
 #include "BusinessUser.h"
 
 User* USocial::registerUser(std::string name, bool is_business_user)
@@ -14,6 +15,7 @@ User* USocial::registerUser(std::string name, bool is_business_user)
         new_user = new BusinessUser(new_user_id, name, this);
     }
 
+    // Add new user to map.
     users[new_user_id] = new_user;
 
     return new_user;

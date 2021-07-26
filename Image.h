@@ -1,14 +1,12 @@
 #pragma once
 
-#include <iostream>
 #include "Media.h"
-
 
 class Image final : public Media
 {
 public:
-	void display() const override
+	std::string getMedia() const override
 	{
-		std::cout << "Image::display";
+		return "Image::display()";
 	}
 };
