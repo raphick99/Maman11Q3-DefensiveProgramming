@@ -1,5 +1,5 @@
+#include <iostream>
 #include "Message.h"
-
 
 Message::Message(const std::string& _text) :
     text(_text)
@@ -12,5 +12,5 @@ const std::string& Message::getText() const
 
 void Message::displayMessage() const
 {
-    std::cout << text << "\n";
+    std::cout << getText() << "\n";
 }
